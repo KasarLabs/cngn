@@ -1,4 +1,4 @@
-# cNGN Token 💰
+# cNGN Token
 
 A Cairo smart contract implementation of the cNGN token, a compliant ERC20 token.
 
