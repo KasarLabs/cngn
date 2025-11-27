@@ -1,0 +1,29 @@
+{
+  "name": "cngn-contracts",
+  "version": "0.1.0",
+  "description": "cNGN Token - Cairo smart contracts deployment scripts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "build:contracts": "scarb build",
+    "deploy": "npx ts-node scripts/deploy.ts",
+    "deploy:sepolia": "NETWORK=sepolia npx ts-node scripts/deploy.ts",
+    "deploy:mainnet": "NETWORK=mainnet npx ts-node scripts/deploy.ts",
+    "test": "snforge test",
+    "clean": "rm -rf dist",
+    "clean:deployments": "rm -rf deployments"
+  },
+  "dependencies": {
+    "starknet": "^6.11.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

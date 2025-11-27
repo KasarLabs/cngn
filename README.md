@@ -35,7 +35,7 @@ Run `scarb build`
 
 ## Testing
 
-Comprehensive test suite with 71 tests covering:
+Comprehensive test suite with 84 tests covering:
 - Token deployment, ERC20 functions, and initialization
 - Controlled minting, burning, and redemption flows
 - Blacklist and whitelist management
@@ -45,4 +45,37 @@ Comprehensive test suite with 71 tests covering:
 - Bridge authorization
 
 Run `snforge test`
+
+## Deployment
+
+Deploy contracts to Starknet Sepolia (testnet) or Mainnet using TypeScript scripts.
+
+### Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Copy env.example to .env and configure
+cp env.example .env
+```
+
+Configure your `.env` file:
+```
+STARKNET_PRIVATE_KEY=your_private_key
+STARKNET_ACCOUNT_ADDRESS=0x_your_account_address
+STARKNET_NETWORK=sepolia
+```
+
+### Deploy
+
+```bash
+# Deploy to Sepolia testnet
+npm run deploy:sepolia
+
+# Deploy to Mainnet
+npm run deploy:mainnet
+```
+
+Deployment addresses are saved to the `deployments/` folder.
 
