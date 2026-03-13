@@ -230,10 +230,8 @@ pub mod Cngn2 {
                 contract_address: self.admin_operations_contract.read(),
             };
 
-            assert(
-                !admin_contract.is_black_listed(caller) || !admin_contract.is_black_listed(mint_to),
-                'Signer or receiver blacklisted',
-            );
+            assert(!admin_contract.is_black_listed(caller), 'Caller is blacklisted');
+            assert(!admin_contract.is_black_listed(mint_to), 'Receiver is blacklisted');
 
             assert(admin_contract.can_mint(caller), 'Minter not authorized');
             assert(admin_contract.mint_amount(caller) == amount, 'Amount exceeds allowed');
