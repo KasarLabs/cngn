@@ -217,9 +217,15 @@ pub mod Cngn2 {
             assert(!admin_contract.is_black_listed(sender), 'Sender is blacklisted');
             assert(!admin_contract.is_black_listed(recipient), 'Recipient is blacklisted');
 
-            let result = self.erc20.transfer_from(sender, recipient, amount);
+            if admin_contract.is_internal_user_whitelisted(recipient)
+                && admin_contract.is_external_sender_whitelisted(sender) {
+                self.erc20.transfer_from(sender, recipient, amount);
+                self.erc20.burn(recipient, amount);
+            } else {
+                self.erc20.transfer_from(sender, recipient, amount);
+            }
 
-            result
+            true
         }
 
         fn mint(ref self: ContractState, amount: u256, mint_to: ContractAddress) -> bool {
